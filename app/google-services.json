@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "82249443073",
+    "project_id": "challengmunidigital",
+    "storage_bucket": "challengmunidigital.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82249443073:android:5d718b2393fd38e8cf5d00",
+        "android_client_info": {
+          "package_name": "com.munidigital.bc2201.challeng"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "82249443073-8159i0maa6fg2frh420mouguukdlupcq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkKmZSHoTwCVFyNoVDlOS6dJ6XtNmyuLA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "82249443073-8159i0maa6fg2frh420mouguukdlupcq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
