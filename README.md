@@ -8,7 +8,7 @@ A continuación, redacto brevemente el proceso de creación de este proyecto:
 
 -Luego, un tercer proyecto para implementar el mapa y el uso de Geocoder, que también desconocía su implementación.
 
--Para finalizar una vez cada parte ya funcionar cree el proyecto final anexando cada parte sin grandes problemas.
+-Para finalizar una vez cada parte ya funcional, cree el proyecto final anexando cada parte sin grandes problemas.
 
 ---
 
