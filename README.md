@@ -1,6 +1,6 @@
 # ChallengFinalMD
 
-A continuación, redacto brevemente el proceso de creación de esta aplicación:
+A continuación, redacto brevemente el proceso de creación de este proyecto:
 
 -Para empezar, leí los requerimientos para identificar las herramientas a usar, de esta forma también fragmente el proyecto en dos partes, el loguin y la lista de equipos con sus datos.
 
