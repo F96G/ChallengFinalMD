@@ -94,12 +94,13 @@ class DatoFragment : Fragment() {
         else
             tvNombreAlt.visibility = View.GONE
 
-        if (equipo.idLiga1 != null)
+        if (equipo.idLiga1 != null && equipo.idLiga1 != 4834)//4834 es el identificador de _No League Soccer
+
             tvLiga1.text = equipo.liga1
         else
             tvLiga2.visibility = View.GONE
 
-        if (equipo.idLiga2 != null)
+        if (equipo.idLiga2 != null && equipo.idLiga1 != 4834)
             tvLiga2.text = equipo.liga2
         else
             tvLiga2.visibility = View.GONE

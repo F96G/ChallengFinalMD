@@ -51,10 +51,18 @@
                     tools:text="Club Agropecuario Argentino" />
 
                 <TextView
-                    android:id="@+id/tvLiga1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:text="Ligas actuales:"/>
+
+                <TextView
+                    android:id="@+id/tvLiga1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     tools:text="Argentinian Primera B Nacional" />
