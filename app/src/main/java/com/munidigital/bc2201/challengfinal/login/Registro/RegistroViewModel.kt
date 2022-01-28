@@ -1,4 +1,4 @@
-package com.munidigital.bc2201.challengfinal.login
+package com.munidigital.bc2201.challengfinal.login.Registro
 
 import android.app.Application
 import android.content.ContentValues
@@ -11,8 +11,8 @@ import com.google.firebase.auth.FirebaseUser
 
 class RegistroViewModel(app : Application): AndroidViewModel(app) {
     private val _Estado = MutableLiveData(Estado(false, null))
-
     val estado : LiveData<Estado> = _Estado
+
 
     data class Estado(
         val fallo: Boolean,
@@ -36,4 +36,6 @@ class RegistroViewModel(app : Application): AndroidViewModel(app) {
                 }
             }
     }
+
+
 }

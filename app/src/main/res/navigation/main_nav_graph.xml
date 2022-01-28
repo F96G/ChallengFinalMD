@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listaEquiposFragment"
-        android:name="com.munidigital.bc2201.challengfinal.main.ListaEquiposFragment"
+        android:name="com.munidigital.bc2201.challengfinal.main.Lista.ListaEquiposFragment"
         android:label="fragment_lista_equipos"
         tools:layout="@layout/fragment_lista_equipos" >
         <action
@@ -16,11 +16,23 @@
     </fragment>
     <fragment
         android:id="@+id/datoFragment"
-        android:name="com.munidigital.bc2201.challengfinal.main.DatoFragment"
+        android:name="com.munidigital.bc2201.challengfinal.main.Dato.DatoFragment"
         android:label="DatoFragment"
         tools:layout="@layout/fragment_dato">
         <argument
             android:name="equipo"
             app:argType="com.munidigital.bc2201.challengfinal.Equipo" />
+        <action
+            android:id="@+id/action_datoFragment_to_mapaFragment"
+            app:destination="@id/mapaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapaFragment"
+        android:name="com.munidigital.bc2201.challengfinal.main.Mapa.MapaFragment"
+        android:label="fragment_mapa"
+        tools:layout="@layout/fragment_mapa" >
+        <argument
+            android:name="equipo"
+            app:argType="com.munidigital.bc2201.challengfinal.Equipo"/>
     </fragment>
 </navigation>

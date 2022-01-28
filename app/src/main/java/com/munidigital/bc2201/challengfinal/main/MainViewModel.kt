@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.munidigital.bc2201.challengfinal.Equipo
 import com.munidigital.bc2201.challengfinal.api.ApiResposeStatus
 import com.munidigital.bc2201.challengfinal.database.getDatabase
+import com.munidigital.bc2201.challengfinal.main.Lista.ListRepository
 import kotlinx.coroutines.launch
 import java.net.UnknownHostException
 import java.util.*
@@ -21,13 +22,10 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
     private var _status = MutableLiveData<ApiResposeStatus>()
     val status:LiveData<ApiResposeStatus> get() = _status
 
-    private var _soyFavorito = MutableLiveData<Boolean>()
-    val soyFavorito:LiveData<Boolean> get() = _soyFavorito
-
-
+    private var soyFavorito = false
     private var saveList = mutableListOf<Equipo>()
     private val database = getDatabase(application)
-    private val repositorio = MainRepository(database)
+    private val repositorio = ListRepository(database)
 
     init {
         cargarEquiposDatabase()
@@ -36,21 +34,23 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
     fun cargarBusqueda(newText: String?){
         val tempList = mutableListOf<Equipo>()
 
-        val textoBusqueda = newText!!.toLowerCase(Locale.getDefault())
+        newText?.let {
+            val textoBusqueda =  it.lowercase(Locale.getDefault())
 
-        if (textoBusqueda.isNotEmpty()){
-            for (equipo in saveList)
-                if (equipo.nombre.toLowerCase(Locale.getDefault()).contains(textoBusqueda))
-                    tempList.add(equipo)
-        }else {
-            tempList.addAll(saveList)
+            if (textoBusqueda.isNotEmpty()){
+                for (equipo in saveList)
+                    if (equipo.nombre.lowercase(Locale.getDefault()).contains(textoBusqueda))
+                        tempList.add(equipo)
+            }else {
+                tempList.addAll(saveList)
+            }
+
+            _equiposView.value = tempList
         }
-
-        _equiposView.value = tempList
     }
 
     fun setearFavoritos(){
-        if (_soyFavorito.value!!){//Si era facorito vuelvo a cargar
+        if (soyFavorito){//Si era facorito vuelvo a cargar
             cargarEquiposDatabase()
         }else{//Si no era favorito cargo los favoritos
             val tempList = mutableListOf<Equipo>()
@@ -60,7 +60,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
             }
             _equiposView.value = tempList
             saveList = tempList
-            _soyFavorito.value = true
+            soyFavorito = true
         }
     }
 
@@ -81,7 +81,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
             _equiposView.value = saveList
         }
         //Nunca voy a cargar el equipo completo y ser favorito
-        _soyFavorito.value = false
+        soyFavorito = false
     }
 
     private fun cargarEquipos() {

@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.munidigital.bc2201.challengfinal.database.getDatabase
-import com.munidigital.bc2201.challengfinal.main.MainRepository
+import com.munidigital.bc2201.challengfinal.main.Lista.ListRepository
 
 class SyncWorkManager(appContext: Context, params: WorkerParameters): CoroutineWorker(appContext, params) {
 
@@ -13,7 +13,7 @@ class SyncWorkManager(appContext: Context, params: WorkerParameters): CoroutineW
     }
 
     private val database = getDatabase(appContext)
-    private val repositorio = MainRepository(database)
+    private val repositorio = ListRepository(database)
 
 
     override suspend fun doWork(): Result {

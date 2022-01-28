@@ -9,12 +9,12 @@ import android.os.Looper
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
-import com.munidigital.bc2201.challengfinal.login.LogActivity
+import com.munidigital.bc2201.challengfinal.login.Logueo.LogActivity
 import com.munidigital.bc2201.challengfinal.login.LoginViewModel
 import com.munidigital.bc2201.challengfinal.main.MainActivity
 
 class SplashActivity : AppCompatActivity() {
-    private val SPLASH_DURATION: Long = 2000 // Setea el tiempo del splash en ms
+    private val SPLASH_DURATION: Long = 1500 // Setea el tiempo del splash en ms
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

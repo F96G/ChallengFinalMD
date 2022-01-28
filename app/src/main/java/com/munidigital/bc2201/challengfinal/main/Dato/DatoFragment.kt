@@ -1,4 +1,4 @@
-package com.munidigital.bc2201.challengfinal.main
+package com.munidigital.bc2201.challengfinal.main.Dato
 
 import android.content.Context
 import android.content.pm.PackageManager
@@ -15,10 +15,12 @@ import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.munidigital.bc2201.challengfinal.Equipo
 import com.munidigital.bc2201.challengfinal.R
+import com.munidigital.bc2201.challengfinal.main.MainViewModel
 
 class DatoFragment : Fragment() {
 
@@ -28,98 +30,99 @@ class DatoFragment : Fragment() {
     private var package_name = "com.android.chrome"
 
     private lateinit var rootView:View
-    private lateinit var mainViewModel:MainViewModel
-
+    private lateinit var mainViewModel: MainViewModel
     private lateinit var equipo: Equipo
 
     private lateinit var imagen: ImageView
-    private lateinit var nombre: TextView
-    private lateinit var nombreAlt: TextView
-    private lateinit var liga1: TextView
-    private lateinit var liga2: TextView
-    private lateinit var anioFundado: TextView
-    private lateinit var descripcion: TextView
-    private lateinit var estadio: TextView
-    private lateinit var capacidad: TextView
-    private lateinit var ubicacion: TextView
-    private lateinit var web: TextView
+    private lateinit var tvNombre: TextView
+    private lateinit var tvNombreAlt: TextView
+    private lateinit var tvLiga1: TextView
+    private lateinit var tvLiga2: TextView
+    private lateinit var tvAnioFundado: TextView
+    private lateinit var tvDescripcion: TextView
+    private lateinit var tvEstadio: TextView
+    private lateinit var tvCapacidad: TextView
+    private lateinit var tvUbicacion: TextView
+    private lateinit var tvWeb: TextView
     private lateinit var webView: WebView
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         rootView = inflater.inflate(R.layout.fragment_dato, container, false)
 
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
         equipo = args.equipo
 
+        //Habilita cambiar de toolbar
         setHasOptionsMenu(true)
-
-        imagen = rootView.findViewById<ImageView>(R.id.ivEscudo)
-        nombre = rootView.findViewById<TextView>(R.id.tvNombre)
-        nombreAlt = rootView.findViewById<TextView>(R.id.tvNombreAlt)
-        liga1 = rootView.findViewById<TextView>(R.id.tvLiga1)
-        liga2 = rootView.findViewById<TextView>(R.id.tvLiga2)
-        anioFundado = rootView.findViewById<TextView>(R.id.tvFundado)
-        descripcion = rootView.findViewById<TextView>(R.id.tvDescripcion)
-        estadio = rootView.findViewById<TextView>(R.id.tvEstadio)
-        capacidad = rootView.findViewById<TextView>(R.id.tvCapacidad)
-        ubicacion = rootView.findViewById<TextView>(R.id.tvUbicacion)
-        web = rootView.findViewById<TextView>(R.id.tvWeb)
-        webView = rootView.findViewById<WebView>(R.id.webView)
-
-
 
         setDatos()
 
-        web.setOnClickListener{
+        tvWeb.setOnClickListener{
             startWebView()
+        }
+
+        tvUbicacion.setOnClickListener{
+            val action = DatoFragmentDirections.actionDatoFragmentToMapaFragment(equipo)
+            findNavController().navigate(action)
         }
 
         return rootView
     }
 
+
+
     private fun setDatos() {
+        imagen = rootView.findViewById<ImageView>(R.id.ivEscudo)
+        tvNombre = rootView.findViewById<TextView>(R.id.tvNombre)
+        tvNombreAlt = rootView.findViewById<TextView>(R.id.tvNombreAlt)
+        tvLiga1 = rootView.findViewById<TextView>(R.id.tvLiga1)
+        tvLiga2 = rootView.findViewById<TextView>(R.id.tvLiga2)
+        tvAnioFundado = rootView.findViewById<TextView>(R.id.tvFundado)
+        tvDescripcion = rootView.findViewById<TextView>(R.id.tvDescripcion)
+        tvEstadio = rootView.findViewById<TextView>(R.id.tvEstadio)
+        tvCapacidad = rootView.findViewById<TextView>(R.id.tvCapacidad)
+        tvUbicacion = rootView.findViewById<TextView>(R.id.tvUbicacion)
+        tvWeb = rootView.findViewById<TextView>(R.id.tvWeb)
+        webView = rootView.findViewById<WebView>(R.id.webView)
+
         Glide.with(this).load(equipo.imagen).centerCrop().into(imagen)
-        nombre.text = equipo.nombre
-        anioFundado.text = "Fundado: " + equipo.anioFundado.toString()
+        tvNombre.text = equipo.nombre
+        tvAnioFundado.text = "Fundado: " + equipo.anioFundado.toString()
 
         if (!equipo.nombreAlt.isNullOrEmpty())
-            nombreAlt.text = equipo.nombreAlt
+            tvNombreAlt.text = equipo.nombreAlt
         else
-            nombreAlt.visibility = View.GONE
+            tvNombreAlt.visibility = View.GONE
 
         if (equipo.idLiga1 != null)
-            liga1.text = equipo.liga1
+            tvLiga1.text = equipo.liga1
         else
-            liga2.visibility = View.GONE
+            tvLiga2.visibility = View.GONE
 
         if (equipo.idLiga2 != null)
-            liga2.text = equipo.liga2
+            tvLiga2.text = equipo.liga2
         else
-            liga2.visibility = View.GONE
+            tvLiga2.visibility = View.GONE
 
         if (!equipo.descripcion.isNullOrEmpty())
-            descripcion.text = equipo.descripcion
+            tvDescripcion.text = equipo.descripcion
         else
-            descripcion.visibility = View.GONE
+            tvDescripcion.visibility = View.GONE
 
         if(!equipo.estadio.isEmpty()){
-            estadio.text = "Estadio: " + equipo.estadio
-            capacidad.text = "Capacidad: " + equipo.capacidad.toString()
-            ubicacion.text = equipo.direccion
+            tvEstadio.text = "Estadio: " + equipo.estadio
+            tvCapacidad.text = "Capacidad: " + equipo.capacidad.toString()
+            tvUbicacion.text = equipo.direccion
         }else{
-            estadio.visibility = View.GONE
-            capacidad.visibility = View.GONE
-            ubicacion.visibility = View.GONE
+            tvEstadio.visibility = View.GONE
+            tvCapacidad.visibility = View.GONE
+            tvUbicacion.visibility = View.GONE
         }
 
         if (!equipo.web.isEmpty())
-            web.text = equipo.web
+            tvWeb.text = equipo.web
         else
-            web.visibility = View.GONE
+            tvWeb.visibility = View.GONE
     }
 
     private fun startWebView() {
@@ -179,20 +182,24 @@ class DatoFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
+
             R.id.iAniadirFav ->{
                 mainViewModel.seleccionarFavorito(equipo)
-                if(!equipo.favorito){ //Si era favorito
-                    item.icon = ContextCompat.getDrawable(requireActivity(),R.drawable.ic_baseline_star_border_24)
-                    equipo.favorito = false
-                }
-                else{ //si no era favorito
+                if(equipo.favorito){ //Si no era favorito
                     item.icon = ContextCompat.getDrawable(requireActivity(),R.drawable.ic_baseline_star_24_white)
                     equipo.favorito = true
                 }
-
+                else{ //si era favorito
+                    item.icon = ContextCompat.getDrawable(requireActivity(),R.drawable.ic_baseline_star_border_24)
+                    equipo.favorito = false
+                }
             }
+
         }
+
         return super.onOptionsItemSelected(item)
     }
+
+
 
 }

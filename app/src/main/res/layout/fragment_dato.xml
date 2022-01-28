@@ -85,6 +85,8 @@
                 android:id="@+id/linear2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
@@ -125,8 +127,11 @@
                 android:id="@+id/linear3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@+id/barra2"
                 app:layout_goneMarginEnd="16dp">
@@ -155,6 +160,7 @@
                     android:textColor="@color/blue"
                     android:textSize="16sp"
                     tools:text="Lugar: Carlos Casares, Argentina" />
+
             </LinearLayout>
 
             <View
@@ -172,8 +178,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@+id/barra3"
                 app:layout_goneMarginEnd="16dp">

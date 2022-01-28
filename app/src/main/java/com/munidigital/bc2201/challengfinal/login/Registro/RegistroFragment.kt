@@ -1,4 +1,4 @@
-package com.munidigital.bc2201.challengfinal.login
+package com.munidigital.bc2201.challengfinal.login.Registro
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -1,4 +1,4 @@
-package com.munidigital.bc2201.challengfinal.login
+package com.munidigital.bc2201.challengfinal.login.Logueo
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseUser
 import com.munidigital.bc2201.challengfinal.main.MainActivity
 import com.munidigital.bc2201.challengfinal.R
+import com.munidigital.bc2201.challengfinal.login.LoginViewModel
 
 class LoginFragment : Fragment() {
 

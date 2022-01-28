@@ -40,12 +40,13 @@ class EquipoAdapter: ListAdapter<Equipo, EquipoAdapter.ViewHolder>(DiffCallbak){
     inner class ViewHolder(private val binding: ItemEquipoBinding, private val context: Context): RecyclerView.ViewHolder(binding.root){
         fun bind(equipo: Equipo){
 
+            Glide.with(context).load(equipo.imagen).centerCrop().into(binding.ivEscudo)
             binding.tvNombre.text =  equipo.nombre
+
             if (equipo.favorito)
                 binding.ivFavorito.visibility = View.VISIBLE
             else
                 binding.ivFavorito.visibility = View.GONE
-            Glide.with(context).load(equipo.imagen).centerCrop().into(binding.ivEscudo)
 
             //Esto no es muy necesario pero agiliza la velocidad del recyclerView en caso de listas muy grandes
             binding.executePendingBindings()

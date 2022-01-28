@@ -1,4 +1,4 @@
-package com.munidigital.bc2201.challengfinal.main
+package com.munidigital.bc2201.challengfinal.main.Lista
 
 import com.munidigital.bc2201.challengfinal.Equipo
 import com.munidigital.bc2201.challengfinal.api.EquipoJsonResponse
@@ -7,12 +7,12 @@ import com.munidigital.bc2201.challengfinal.database.EquiposDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class MainRepository (private val database: EquiposDatabase){
+class ListRepository (private val database: EquiposDatabase){
 
     suspend fun obtenerEquipos() : MutableList<Equipo>{
         return withContext(Dispatchers.IO){
-            val equipoJsonResponse = service.getEquipos()
 
+            val equipoJsonResponse = service.getEquipos()
             val listaEquipos = parseEquipoResultado(equipoJsonResponse)
 
             database.equiposDao.insertAll(listaEquipos)
@@ -21,7 +21,6 @@ class MainRepository (private val database: EquiposDatabase){
 
             listaEquipos
         }
-
     }
 
     suspend fun recuperarEquiposDatabase(): MutableList<Equipo> {
