@@ -28,7 +28,7 @@ class MapaFragment : Fragment() {
         val locationn = LatLng(request.latitude, request.longitude)
 
         googleMap.addMarker(MarkerOptions().position(locationn).title(equipo.estadio))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(locationn, 20.0f))
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(locationn, 16.0f))
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

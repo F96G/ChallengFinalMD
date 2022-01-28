@@ -24,9 +24,8 @@ import com.munidigital.bc2201.challengfinal.main.MainViewModel
 
 class DatoFragment : Fragment() {
 
-    //Recibo los agrumentos
     private val args: DatoFragmentArgs by navArgs()
-
+    //nombre del paquete de chrome
     private var package_name = "com.android.chrome"
 
     private lateinit var rootView:View
@@ -160,8 +159,8 @@ class DatoFragment : Fragment() {
         }
     }
 
+    // verifica si chrome esta instalado
     fun Context.isPackageInstalled(packageName: String): Boolean {
-        // check if chrome is installed or not
         return try {
             packageManager.getPackageInfo(packageName, 0)
             true
